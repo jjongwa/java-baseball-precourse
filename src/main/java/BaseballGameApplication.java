@@ -6,6 +6,6 @@ public class BaseballGameApplication {
 
     public static void main(String[] args) {
         final BaseballGameController gameController = new BaseballGameController(new InputView(), new OutputView());
-        gameController.excute();
+        gameController.execute();
     }
 }

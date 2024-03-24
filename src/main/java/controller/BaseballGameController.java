@@ -16,19 +16,48 @@ public class BaseballGameController {
         this.outputView = outputView;
     }
 
-    public void excute() {
+    public void execute() {
+        while (true) {
+            if (isGameEnd()) return;
+        }
+    }
+
+    private boolean isGameEnd() {
+        startNewGame();
+        boolean restartTrigger;
+        while (true) {
+            try {
+                restartTrigger = inputView.readRestart();
+                break;
+            } catch (final IllegalArgumentException exception) {
+                System.out.println(exception.getMessage());
+            }
+        }
+        return gameEndCommand(restartTrigger);
+    }
+
+    private boolean gameEndCommand(final boolean restartTrigger) {
+        return !restartTrigger;
+    }
+
+    private void startNewGame() {
         final Game game = Game.start();
         while (true) {
             try {
                 final Score score = game.play(new PitchBalls(inputView.readBallNumbers()));
                 outputView.printScoreMessage(score.getStrikeCount(), score.getBallCount());
-                if (score.checkGameEnd()) {
-                    outputView.printGameClearMessage();
-                    break;
-                }
+                if (gameClearCommand(score)) break;
             } catch (final IllegalArgumentException exception) {
                 System.out.println(exception.getMessage());
             }
         }
+    }
+
+    private boolean gameClearCommand(final Score score) {
+        if (score.checkGameEnd()) {
+            outputView.printGameClearMessage();
+            return true;
+        }
+        return false;
     }
 }
