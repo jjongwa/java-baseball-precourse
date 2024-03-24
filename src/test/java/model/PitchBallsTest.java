@@ -1,3 +1,6 @@
+package model;
+
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -99,8 +101,8 @@ class PitchBallsTest {
 
             // then
             assertAll(
-                    () -> assertThat(score.getStrikeCount()).isEqualTo(strikeCount),
-                    () -> assertThat(score.getBallCount()).isEqualTo(ballCount)
+                    () -> Assertions.assertThat(score.getStrikeCount()).isEqualTo(strikeCount),
+                    () -> Assertions.assertThat(score.getBallCount()).isEqualTo(ballCount)
             );
         }
     }

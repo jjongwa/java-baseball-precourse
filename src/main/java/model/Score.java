@@ -1,3 +1,5 @@
+package model;
+
 public class Score {
 
     private final int strikeCount;
