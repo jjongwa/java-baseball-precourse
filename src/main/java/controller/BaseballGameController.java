@@ -22,7 +22,7 @@ public class BaseballGameController {
             try {
                 final Score score = game.play(new PitchBalls(inputView.readBallNumbers()));
                 outputView.printScoreMessage(score.getStrikeCount(), score.getBallCount());
-                if (score.getStrikeCount() == 3) {
+                if (score.checkGameEnd()) {
                     outputView.printGameClearMessage();
                     break;
                 }

@@ -11,6 +11,10 @@ public class Score {
         this.ballCount = ballCount;
     }
 
+    public boolean checkGameEnd() {
+        return strikeCount == 3;
+    }
+
     public int getStrikeCount() {
         return strikeCount;
     }
