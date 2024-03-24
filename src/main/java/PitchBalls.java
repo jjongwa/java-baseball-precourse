@@ -11,6 +11,21 @@ public class PitchBalls {
         this.numbers = numbers;
     }
 
+    public Score compare(final PitchBalls otherPitchBalls) {
+        int strikeCount = 0;
+        int ballCount = 0;
+        for (int order = 0; order < 3; order++) {
+            if (numbers.get(order).equals(otherPitchBalls.numbers.get(order))) {
+                strikeCount++;
+                continue;
+            }
+            if (otherPitchBalls.numbers.contains(numbers.get(order))) {
+                ballCount++;
+            }
+        }
+        return new Score(strikeCount, ballCount);
+    }
+
     private void validate(final List<Integer> numbers) {
         checkSize(numbers);
         checkNumberRange(numbers);

@@ -9,6 +9,14 @@ public class Score {
         this.ballCount = ballCount;
     }
 
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
     private void validate(final int strike, final int ball) {
         checkCountRange(strike, ball);
         checkTotalCount(strike, ball);
